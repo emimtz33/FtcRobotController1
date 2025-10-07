@@ -12,23 +12,24 @@ public class ServoTest extends LinearOpMode {
 
         //Inicializacion del servo
         Servo servoOne;
-        servoOne =  hardwareMap.get(Servo.class,"servo one");
-        //servoOne.setposition
+        servoOne =  hardwareMap.get(Servo.class,"servo_two");
+
         //limitar al servo
         servoOne.scaleRange(0.2,0.8);
 
         waitForStart();
 
         while(opModeIsActive()){
-            servoOne.setPosition(); //Posicion del servo
 
-            
         //Controlar servo con control
-        if(gamepad1.circle){
-            servoOne.setPosition(1);
-            } else if (gamepad1.triangle) {
-                servoOne.setPosition(0);
+        if(gamepad1.triangle){
+            servoOne.setPosition(0.8);
+
             }
+
+        if(gamepad1.circle) {
+            servoOne.setPosition(0.2);
+        }
 
 
         //Telemetria de posicion del servo
