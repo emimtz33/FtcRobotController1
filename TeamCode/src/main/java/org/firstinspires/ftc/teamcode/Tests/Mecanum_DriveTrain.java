@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp(name = "MecanumDriveTrain by Emiliano")
-public class Mecanum_Test extends LinearOpMode {
+public class Mecanum_DriveTrain extends LinearOpMode {
     @Override
     public void runOpMode(){
 
