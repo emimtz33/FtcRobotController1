@@ -11,9 +11,9 @@ public class Mecanum_Test extends LinearOpMode {
     public void runOpMode(){
 
         //Declarar variables de movimiento de robot
-        double drive;
-        double turn;
-        double strafe;
+        double drive;   //mover hacia delante
+        double turn;    //girar
+        double strafe;  //ir en diagonal
 
         //Declarar variables de poder de motores
         double FIPower;
@@ -22,13 +22,13 @@ public class Mecanum_Test extends LinearOpMode {
         double ADPower;
 
         //Inicializacion de los 4 motores para el chasis
-        DcMotor FrenteIzquierdo = hardwareMap.get(DcMotor.class, "FrenteIzquierdo");
-        DcMotor FrenteDerecho = hardwareMap.get(DcMotor.class, "FrenteDerecho");
-        DcMotor AtrasIzquierdo = hardwareMap.get(DcMotor.class, "AtrasIzquierdo");
-        DcMotor AtrasDerecho = hardwareMap.get(DcMotor.class, "AtrasDerecho");
+        DcMotor FrenteIzquierdo = hardwareMap.get(DcMotor.class, "leftFront");
+        DcMotor FrenteDerecho = hardwareMap.get(DcMotor.class, "rightFront");
+        DcMotor AtrasIzquierdo = hardwareMap.get(DcMotor.class, "leftBack");
+        DcMotor AtrasDerecho = hardwareMap.get(DcMotor.class, "rightBack");
 
         //Invertir motores para girar en el mismo sentido
-        FrenteDerecho.setDirection(DcMotorSimple.Direction.REVERSE);
+        FrenteDerecho.setDirection(DcMotorSimple.Direction.FORWARD);
         AtrasDerecho.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //Encoders
@@ -44,7 +44,12 @@ public class Mecanum_Test extends LinearOpMode {
             //configurar valores del joystick del control
             drive = gamepad1.left_stick_y * -0.8; //mover el robot
             turn = gamepad1.right_stick_x; //girar el robot
-            strafe = gamepad1.left_stick_x; //mover el robot para los lados
+            strafe = gamepad1.left_stick_x; //mover el robot en diagonal
+
+            //Modo lento
+            if(gamepad1.a){ //Presionar boton a
+                drive = gamepad1.left_stick_y * -0.2;       //limitar motor a 0.2 de potencia
+            }else{drive = gamepad1.left_stick_y * -0.8;}    //si no se presiona el boton, dejar el motor a 0.8 de potencia
 
             //Declarar variables de poder de motores
             FIPower = drive + turn + strafe; //positivo hacia enfrente
@@ -60,4 +65,7 @@ public class Mecanum_Test extends LinearOpMode {
         }
 
     }
+
 }
+
+//33 was here
