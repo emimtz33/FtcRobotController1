@@ -11,18 +11,18 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.internal.system.Deadline;
 
 import java.util.concurrent.TimeUnit;
-
-@TeleOp(name = "Mecanum_WI by Emiliano")
+@TeleOp(name = "Mecanum WI")
 public class MecanumDrive_WithoutIMU extends LinearOpMode {
     @Override
     public void runOpMode(){
         //Declarar 4 motores para el chasis
-        DcMotor FrenteIzquierdo = hardwareMap.get(DcMotor.class, "FrenteIzquierdo");
-        DcMotor FrenteDerecho = hardwareMap.get(DcMotor.class, "FrenteDerecho");
-        DcMotor AtrasIzquierdo = hardwareMap.get(DcMotor.class, "AtrasIzquierdo");
-        DcMotor AtrasDerecho = hardwareMap.get(DcMotor.class, "AtrasDerecho");
+        DcMotor FrenteIzquierdo = hardwareMap.get(DcMotor.class, "leftFront");
+        DcMotor FrenteDerecho = hardwareMap.get(DcMotor.class, "rightFront");
+        DcMotor AtrasIzquierdo = hardwareMap.get(DcMotor.class, "leftBack");
+        DcMotor AtrasDerecho = hardwareMap.get(DcMotor.class, "rightBack");
 
         //Inversion de dirección de motores
+        FrenteDerecho.setDirection(DcMotorSimple.Direction.FORWARD);
         AtrasIzquierdo.setDirection(DcMotorSimple.Direction.REVERSE);
         AtrasDerecho.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -37,6 +37,7 @@ public class MecanumDrive_WithoutIMU extends LinearOpMode {
         double highPower = 0.8;
         double currentPower = highPower;
 
+
         //Reseteo de IMU
         //Deadline imuLimit = new Deadline(500, TimeUnit.MILLISECONDS);
 
@@ -48,6 +49,8 @@ public class MecanumDrive_WithoutIMU extends LinearOpMode {
         ));
         imu.initialize(parameters);
         */
+
+
 
         //Iniciar la Driver Station
         waitForStart();
@@ -64,7 +67,7 @@ public class MecanumDrive_WithoutIMU extends LinearOpMode {
 
             /*  double heading = -imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
             double LxAjustada = -ly * Math.sin(heading) + lx * Math.cos(heading);
-            double LyAjustada = ly * Math.cos(heading) + lx * Math.sin(heading);*/
+            double LyAjustada = ly * Math.cos(heading) + lx * Math.sin(heading); */
 
             //Cambiar modo de velocidad
             if (gamepad1.dpad_down){

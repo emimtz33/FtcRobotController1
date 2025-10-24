@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp(name = "MecanumDriveTrain by Emiliano")
+@TeleOp(name = "Mecanum(Obsolete)")
 public class Mecanum_DriveTrain extends LinearOpMode {
     @Override
     public void runOpMode(){
@@ -25,20 +25,20 @@ public class Mecanum_DriveTrain extends LinearOpMode {
         double ADPower;
 
         //Inicializacion de los 4 motores para el chasis
-        DcMotor FrenteIzquierdo = hardwareMap.get(DcMotor.class, "leftFront");
-        DcMotor FrenteDerecho = hardwareMap.get(DcMotor.class, "rightFront");
-        DcMotor AtrasIzquierdo = hardwareMap.get(DcMotor.class, "leftBack");
-        DcMotor AtrasDerecho = hardwareMap.get(DcMotor.class, "rightBack");
+        DcMotor frenteIzquierdo = hardwareMap.get(DcMotor.class, "leftFront");
+        DcMotor frenteDerecho = hardwareMap.get(DcMotor.class, "rightFront");
+        DcMotor atrasIzquierdo = hardwareMap.get(DcMotor.class, "leftBack");
+        DcMotor atrasDerecho = hardwareMap.get(DcMotor.class, "rightBack");
 
         //Invertir motores para girar en el mismo sentido
-        FrenteDerecho.setDirection(DcMotorSimple.Direction.FORWARD);
-        AtrasDerecho.setDirection(DcMotorSimple.Direction.REVERSE);
+        frenteDerecho.setDirection(DcMotorSimple.Direction.FORWARD);
+        atrasDerecho.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //Encoders
-        FrenteIzquierdo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        FrenteDerecho.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        AtrasIzquierdo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        AtrasDerecho.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        frenteIzquierdo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        frenteDerecho.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        atrasIzquierdo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        atrasDerecho.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         //Pausa para reseteo de IMU
@@ -91,10 +91,10 @@ public class Mecanum_DriveTrain extends LinearOpMode {
              */
 
             //Dar poder a los motores
-            FrenteIzquierdo.setPower(FIPower);
-            FrenteDerecho.setPower(FDPower);
-            AtrasIzquierdo.setPower(AIPower);
-            AtrasDerecho.setPower(ADPower);
+            frenteIzquierdo.setPower(FIPower);
+            frenteDerecho.setPower(FDPower);
+            atrasIzquierdo.setPower(AIPower);
+            atrasDerecho.setPower(ADPower);
         }
 
     }
